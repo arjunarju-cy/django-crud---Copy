@@ -27,7 +27,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fake-key-change-in-pr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['django-crud-uay4.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    "django-crud-1-ue65.onrender.com",
+    ".onrender.com",          
+    "localhost",
+    "127.0.0.1",
+]
+
 
 
 
