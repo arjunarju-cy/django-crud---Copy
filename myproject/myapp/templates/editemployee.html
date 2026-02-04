@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px 35px;
+            width: 420px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form p {
+            margin-bottom: 12px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #0b5ed7;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            padding: 10px;
+            background: #0b5ed7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background: #094bb5;
+        }
+
+        .links {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #0b5ed7;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Update Employee</h2>
+
+        <form action="/updateemployee/{{ data.empid }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input type="hidden" name="empid" value="{{ data.empid }}" readonly>
+
+            <input type="text" name="ename" value="{{ data.name }}" placeholder="Employee Name" required>
+
+            <input type="text" name="desg" value="{{ data.desg }}" placeholder="Designation" required>
+
+            <input type="text" name="salary" value="{{ data.salary }}" placeholder="Salary" required>
+
+            <p class="note">Current Image will be kept if you don’t upload a new one</p>
+            <input type="file" name="image">
+
+            <input type="submit" value="Update Employee">
+        </form>
+
+        <div class="links">
+            <a href="/viewemployee">View Employee</a>
+            <a href="/home">Home Page</a>
+        </div>
+    </div>
+</body>
+</html>
